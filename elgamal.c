@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdint.h>
 
-
+// Random number
 uint64_t randoms(uint64_t upper, uint64_t lower)
 
 {
@@ -43,6 +43,7 @@ uint64_t prime_ran(uint64_t upper,uint64_t lower)
     return p;
 }
 
+// Euclid Algorithm
 uint64_t Euc_gcd(uint64_t a, uint64_t b)
 {
     if (a == 0)
@@ -73,6 +74,7 @@ uint64_t power(uint64_t  x, uint64_t y, uint64_t p)
     return res;
 }
 
+// Exponent
 uint64_t Exponent(uint64_t bit, uint64_t n, uint64_t* y, uint64_t* a)
 {
     if (bit == 1) {
@@ -83,7 +85,7 @@ uint64_t Exponent(uint64_t bit, uint64_t n, uint64_t* y, uint64_t* a)
 }
  
 
-
+// Finding t_value
 uint64_t t_value(uint64_t a, uint64_t m, uint64_t n)
 {
     uint64_t r;
@@ -100,7 +102,7 @@ uint64_t t_value(uint64_t a, uint64_t m, uint64_t n)
 }
 
 
-
+// Finding Primitive Root
 uint64_t PrimitiveRoot(uint64_t p)
 {
     uint64_t flag;
@@ -122,7 +124,7 @@ uint64_t PrimitiveRoot(uint64_t p)
 
 
 
-
+// Choosing x
 uint64_t x_value(uint64_t p)
 
 {
@@ -182,26 +184,25 @@ int main()
 
     uint64_t p,g,x,y;
 
-    uint64_t m = 9867;
-
     uint64_t upper = 100000;
     uint64_t lower = (upper-1000);
 
     srand (time(0));
 
+    // Choose Random Prime P
     p = prime_ran(upper,lower);
+    
+    // Finding Primitive Root of P:
     g = PrimitiveRoot(p);
+    
+    // Choosing x
     x = x_value(p);
 
-
-
+    // calculating public key y
     y = power(g,x,p);
 
-
-
-
-
-
+    
+    // Getting the String from the user:
     char str[1000];
     uint64_t i=0;
     uint64_t mes[1000], c2[1000];
@@ -244,9 +245,7 @@ int main()
         i++;
     }
 
-
     printf("Private Key :\n\tx : %d\n",x);
-
 
     printf("Public Key : \n");
     printf("\tRandom prime number p : %d\n",p);
@@ -265,11 +264,8 @@ int main()
     
     printf("\n\n");
 
-    //uint64_t c2 = m * power(y, r, p) % p;
-
-
-
     // Decryption 
+
     printf("***********************************************\n");
     printf("* Elgamal Decryption m = c2 * (ci^x)^-1 mod p *\n");
     printf("***********************************************\n");
@@ -292,11 +288,10 @@ int main()
         i++;
     }
 
-
-    
     printf("\n\n");
 
-    
+    // Converting ASCII to Original:
+
     printf("The above ASCII to Original given plain text Message : ");
     i = 0; 
     while(mes[i])
@@ -304,8 +299,6 @@ int main()
         printf("%c",mes[i]);
         i++;
     }
-
-
     printf("\n\n");
 
     return 0;
