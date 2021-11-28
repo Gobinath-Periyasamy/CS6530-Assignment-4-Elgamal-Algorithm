@@ -84,7 +84,6 @@ uint64_t Exponent(uint64_t bit, uint64_t n, uint64_t* y, uint64_t* a)
     *a = (*a) * (*a) % n;
 }
  
-
 // Finding t_value
 uint64_t t_value(uint64_t a, uint64_t m, uint64_t n)
 {
@@ -100,7 +99,6 @@ uint64_t t_value(uint64_t a, uint64_t m, uint64_t n)
  
     return y;
 }
-
 
 // Finding Primitive Root
 uint64_t PrimitiveRoot(uint64_t p)
@@ -120,9 +118,6 @@ uint64_t PrimitiveRoot(uint64_t p)
         }
     }
 }
-
-
-
 
 // Choosing x
 uint64_t x_value(uint64_t p)
@@ -167,12 +162,7 @@ uint64_t x_value(uint64_t p)
     }
 
     return toSearch;
-
-
-
 }
-
-
 
 //Driver code
 
@@ -237,7 +227,6 @@ int main()
 
     uint64_t c1 = power(g, r, p);
 
-
     i = 0; 
     while(mes[i])
     {
@@ -252,9 +241,8 @@ int main()
     printf("\tprimitive root g : %d\n\n",g);
 
     printf("Cipher message C1 : %d \n",c1);
-
-
     printf("Cipher Message C2 : ");
+
     i = 0;
     while (c2[i])
     {
